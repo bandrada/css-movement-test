@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+
 import './App.css';
 
-function App() {
+const initPos = {
+  x: 0,
+  y: 0
+}
+
+const App = () => {
+  const [pos, setPos] = useState(initPos);
+  const { x, y} = pos;
+  const [translate, setTranslate] = useState('translate(0px, 0px)');
+
+  const formatMove = () => {
+    return `translate(${x}px, ${y}px)`;
+  }
+
+  const moveLeft = () => {
+    setPos({x: x - 10, y: y})
+    setTranslate(formatMove());
+  }
+
+  const moveRight = () => {
+    setPos({x: x + 10, y: y})
+    setTranslate(formatMove());
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={moveLeft}>
+        Move Left
+      </button>
+      <button onClick={moveRight}>
+        Move Right
+      </button>
+      <div className='test-object' style={{transform: translate}}>
+        \O/
+      </div>
     </div>
   );
 }
