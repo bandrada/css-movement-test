@@ -1,9 +1,7 @@
 .test-object {
-
+  border: 1px solid red;
 }
 
-.none {
-  border: 1px solid red;
-  transform: scale(1) translate(-10%, -10%);
-  
+.world {
+  border: 1px solid black;
 }

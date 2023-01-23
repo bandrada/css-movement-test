@@ -16,26 +16,48 @@ const App = () => {
     return `translate(${x}px, ${y}px)`;
   }
 
+  const moveUnit = 10;
+
+  const moveUp = () => {
+    setPos({x: x, y: y - moveUnit})
+    setTranslate(formatMove());
+  }
+
+  const moveDown = () => {
+    setPos({x: x, y: + moveUnit})
+    setTranslate(formatMove());
+  }
+
   const moveLeft = () => {
-    setPos({x: x - 10, y: y})
+    setPos({x: x - moveUnit, y: y})
     setTranslate(formatMove());
   }
 
   const moveRight = () => {
-    setPos({x: x + 10, y: y})
+    setPos({x: x + moveUnit, y: y})
     setTranslate(formatMove());
   }
 
   return (
     <div>
-      <button onClick={moveLeft}>
-        Move Left
-      </button>
-      <button onClick={moveRight}>
-        Move Right
-      </button>
-      <div className='test-object' style={{transform: translate}}>
-        \O/
+      <div className='controls'>
+        <button onClick={moveUp}>
+          Move Up
+        </button>
+        <button onClick={moveLeft}>
+          Move Left
+        </button>
+        <button onClick={moveRight}>
+          Move Right
+        </button>
+        <button onClick={moveDown}>
+          Move Down
+        </button>
+      </div>
+      <div className='world'>
+        <div className='test-object' style={{transform: translate}}>
+          \O/
+        </div>
       </div>
     </div>
   );
